@@ -81,9 +81,9 @@ I2C::~I2C()
 int
 I2C::set_bus_clock(unsigned bus, unsigned clock_hz)
 {
-	unsigned index = bus - 1;
+	int index = bus - 1;
 
-	if (index < 0 || index >= (sizeof(_bus_clocks) / sizeof(_bus_clocks[0]))) {
+	if (index < 0 || index >= static_cast<int>(sizeof(_bus_clocks) / sizeof(_bus_clocks[0]))) {
 		return -EINVAL;
 	}
 
